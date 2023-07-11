@@ -176,7 +176,6 @@ function getCustomers() {
 
     xhr.open('GET', 'http://localhost:8080/pos/customers' + query, true);
 
-    //no need of 4th step
 
     const tfoot = $("#tbl-customers tfoot tr td:first-child");
     xhr.addEventListener('loadstart',()=> tfoot.text("Please wait!"));
@@ -200,7 +199,6 @@ tbodyElm.on('click', ".delete", (eventData) => {
         xhr:()=> xhr        // We are obtaining xhr (used for this jQuery) which is required for progress bar
         // data: ''
     });
-    //jqxhr => xhr has wrapup from jquery.
 
     showProgress(xhr);
     jqxhr.done(()=>{
@@ -211,18 +209,5 @@ tbodyElm.on('click', ".delete", (eventData) => {
     jqxhr.fail(()=>{
         showToast('error','Failed','Failed to delete the Customer,try again')
     });
-
-    /*
-    *  const jqxhr =  $.ajax(url, {
-    *                   method: 'GET',
-    *                   contentType: 'application/json',    // required when sending data
-    *                   data: 'Request Body'                // required when sending data
-    *                   });
-    *
-    *   jqxhr.done((response, status)=> {});    // response = 1st param, Response status code = 2nd param
-    *   jqxhr.fail(()=> {});
-    *   jqxhr.always(()=> {});
-    *
-    * */
 
 });
